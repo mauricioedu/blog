@@ -14,7 +14,7 @@
 		<ul>
         <li class="category">Website</li>
         <li><%= link_to "Blog", root_path %></li>
-        <li>About</li>
+        
       </ul>
  
       
@@ -26,7 +26,8 @@
       <p>Todos os Posts</p>
  
       <div class="buttons">
-        <button class="button"><%= link_to "Novo Post", new_post_path %></button>
+        <%= link_to new_post_path do %><button class="button">Novo Post</button><% end %>
+        
         
       </div>
     </div>
