@@ -4,10 +4,12 @@
     <p class="comment_body"><%= comment.body %></p>
     <p class="comment_time"><%= time_ago_in_words(comment.created_at) %> Atrás</p>
   </div>
+  
+   <% if user_signed_in? %>
   <p><%= link_to 'Apagar Comentario', [comment.post, comment],
                   method: :delete,
                   class: "button",
                   data: { confirm: 'Voce tem certeza disso?' } %>
-  </p>
-
+</p>
+  <% end %> 
 </div>
