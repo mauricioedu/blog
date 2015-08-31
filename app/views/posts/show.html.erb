@@ -3,9 +3,9 @@
 	<%= @post.title %>
 </h1>
 <p class="date">
-	Submitted <%=time_ago_in_words(@post.created_at) %> atrás |
+	Submitted <%=time_ago_in_words(@post.created_at) %> atrás by <%= @post.user.email %> 
 	<% if user_signed_in? %>
-	<%= link_to 'Editar', edit_post_path(@post) %> |
+	|<%= link_to 'Editar', edit_post_path(@post) %> |
 	<%= link_to 'Deletar',  post_path(@post), method: :delete, data: {confirm: 'Voce tem certeza disso?'} %>
 	<% end %>
 </p>
@@ -15,7 +15,7 @@
 </p>
 
 <div id="comments">
-    <h2><%= @post.comments.count %> Comments</h2>
+    <h2><%= @post.comments.count %> Comentario</h2>
     <%= render @post.comments %>
  
     <h3>Adicionar um Comentario:</h3>
