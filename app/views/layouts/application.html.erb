@@ -36,12 +36,9 @@
       <% if user_signed_in? %>
         <div class="buttons">
             <%= link_to new_post_path do %><button class="button">Novo Post</button><% end %>
-
             
-
-            
-
-            <%= link_to 'Sair', destroy_user_session_path, :method => :delete %>
+            <%= link_to destroy_user_session_path, :method => :delete do%><button class="button">Sair</button><% end %>
+          
           </div>
         <% end %>
     </div>
