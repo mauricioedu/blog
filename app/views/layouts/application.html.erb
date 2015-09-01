@@ -30,7 +30,7 @@
       <p>Todos os Posts</p>
       <br>
       <% if user_signed_in? %>
-        <p>Olá senhor <%= current_user.email %></p>
+        <p>Olá senhor <%= current_user.name %></p>
       <% end %>
 
       <% if user_signed_in? %>
