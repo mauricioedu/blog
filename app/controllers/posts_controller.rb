@@ -45,6 +45,18 @@ class PostsController < ApplicationController
 
 	end
 
+	def upvote
+		@post = Post.find(params[:id])
+		@post.upvote_by current_user
+		redirect_to :back  
+	end
+
+	def downvote
+		@post = Post.find(params[:id])
+		@post.downvote_by current_user
+		redirect_to :back  
+	end	
+
 	def authorized_user
   		@post = current_user.posts.find_by(id: params[:id])
   		redirect_to posts_path, notice: "Não esta autorizado a clicar nesse link" if @post.nil?
