@@ -1,54 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
   <title>Blog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="sidebar">
-
-
-		<ul>
-        <li class="category">Website</li>
-        <li><%= link_to "Blog", root_path %></li>
-
+  <header class="navbar navbar-default" role="navigation">
+    <div class="navbar-inner">
+      <div class="container">
+        <div id="logo" class="navbar-brand"><%= link_to "Blog", root_path %></div>
         
-      </ul>
+            <ul class="nav navbar-nav pull-right">
+            <% if !user_signed_in? %>
+              <li><%= link_to 'Logar', new_user_session_path %></li>
+              <li><%= link_to 'Cadastrar', new_user_registration_path %></li>
+              
+            </ul>
+          <% end -%>
+          <ul class="nav navbar-nav pull-right">
+          <% if user_signed_in? %>
 
-      <% if !user_signed_in? %>
-         
-      <%= link_to new_user_session_path do%><p class="sign_in">Admin Login</p><% end %>
-      <% end %>
-
-
-	</div>
-	<div id="main_content">
-    <div id="header">
-      <p>Todos os Posts</p>
-      <br>
-      <% if user_signed_in? %>
-        <p>Olá senhor <%= current_user.name %></p>
-      <% end %>
-
-      <% if user_signed_in? %>
-        <div class="buttons">
-            <%= link_to new_post_path do %><button class="button">Novo Post</button><% end %>
+          <li><%= link_to 'Novo Post', new_post_path %></li>
+              <li><%= link_to 'Sair', destroy_user_session_path, :method => :delete %></li>
             
-            <%= link_to destroy_user_session_path, :method => :delete do%><button class="button">Sair</button><% end %>
           
-          </div>
+          
+          </ul>
         <% end %>
+        </nav>
+      </div>
     </div>
- 
+  </header>
+
+  <div id="main_content" class="container">
     <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "alert") %>
+      <%= content_tag(:div, msg, class: "alert alert-info") %>
     <% end %>
- 
-
-<%= yield %>
-
+    
+    <p><% if user_signed_in? %>
+          <p>Olá senhor <mark><%= current_user.name %></p>
+          <% end %></mark></p>
+      <div id="content" class="col-md-9 center-block">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

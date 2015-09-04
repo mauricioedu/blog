@@ -14,13 +14,15 @@
 	<%= @post.body %>
 </p>
 
+
 <div id="comments">
-    <h2><%= @post.comments.count %> Comentario</h2>
+    <h2><%= @post.comments.count %> Comentário</h2>
     <%= render @post.comments %>
  
-    <h3>Adicionar um Comentario:</h3>
+    <h3>Adicionar um Comentário:</h3>
     <%= render "comments/form" %>
   </div>
 </div>
 
 </div>
+

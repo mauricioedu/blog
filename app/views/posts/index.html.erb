@@ -1,18 +1,22 @@
 <% @posts.each do |post| %>
-	<div class="post_wrapper">
-		<h2 class="title"><%= link_to post.title, post %></h2>
-		<p class="date"><%= post.created_at.strftime ("%d de %B de %Y")%> escrito por <%= post.user.name %> </p>
-		  <%= link_to like_post_path(post), method: :put do%>
-               		Gostei
-          	<%= post.get_upvotes.size %>
-          <% end %>
-          <%= link_to dislike_post_path(post), method: :put do %>
-           			Não Gostei
-           	<%= post.get_downvotes.size %>
-          <% end %>
-		
-	</div>	
+  <div class="link row clearfix">
+    <h2>
+      <%= link_to post.title, post %><br>
+      <small class="author">Submitted <%= post.created_at.strftime ("%d de %B de %Y")%> by <%= post.user.name %></small>
+    </h2>
 
-
-	</div>
- <% end %>	
+    <div class="btn-group">
+      
+      <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        Gostei
+        <%= post.get_upvotes.size %>
+      <% end %>
+      <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-down">
+        Não Gostei
+        <%= post.get_downvotes.size %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

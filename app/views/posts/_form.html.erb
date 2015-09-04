@@ -9,15 +9,19 @@
 			</ul>
 	</div>
 	<% end %>
-		<p>
-			<%=  f.label :titulo %><br>
-			<%=  f.text_field :title %>
-		</p>
-		<p>
-			<%=  f.label :body %><br>
-			<%=  f.text_area :body %>
-		</p>
-		<p>
-			<%=  f.submit "Criar Post"%>
-		</p>
-	<% end %> 
+
+  <div class="form-group">
+    <%= f.label :titulo %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.submit "Criar Post", class: "btn btn-lg btn-primary" %>
+  </div>
+
+<% end %>	
+		
