@@ -9,6 +9,7 @@ resources :posts do
     put "dislike", to: "posts#downvote"
   end
   resources :comments
+ mount Ckeditor::Engine => "/ckeditor" 
 end
 
 
