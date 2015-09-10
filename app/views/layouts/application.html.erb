@@ -50,8 +50,9 @@
   </div>
 
   <script type="text/javascript">$(document).ready(function() {
-    if ($('cktextarea').length > 0) {
-        var data = $('cktextarea');
+    var x = document.getElementById("ckeditor");
+    if ($(x).length > 0) {
+        var data = $(x);
         $.each(data, function(i) {
             CKEDITOR.replace(data[i].id);
         });
